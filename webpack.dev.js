@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: "development",
   entry: "./src/main.ts",
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -30,8 +31,17 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    static: './dist',
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    watchFiles: ["./public/index.html"],
+    compress: true,
     port: 3000,
   },
-  plugins: [new HtmlWebpackPlugin()]
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './public/index.html'
+    })
+  ]
 }
