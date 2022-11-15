@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
 module.exports = {
   mode: "development",
   entry: "./src/main.ts",
@@ -21,6 +20,14 @@ module.exports = {
           "sass-loader",
         ]
       },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader'
+          }
+        ]
+      }
     ],
   },
   resolve: {
@@ -31,9 +38,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
+    static:{directory: path.join(__dirname, 'public')},
     watchFiles: ["./public/index.html"],
     compress: true,
     port: 3000,
