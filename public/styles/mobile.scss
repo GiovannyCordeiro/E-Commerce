@@ -49,9 +49,10 @@ header{
       .close-menu{
         width: 1rem;
         height:1rem;
-        background: pink;
+        // background: pink;
         display: flex;
         align-items: flex-start;
+        cursor:pointer;
       }
 
       & > .links{
@@ -66,6 +67,11 @@ header{
             text-decoration: none;
             font-weight: bolder;
             color:$Black;
+            transition: 0.1s;
+
+            &:hover{
+              opacity: 80%;
+            }
           }
         }
       }
