@@ -1,17 +1,24 @@
 import "../public/styles/style.scss";
 
 class Header{
-  private openMenu = document.getElementById("menu-mobile")?.addEventListener("click", this.openMenuMobile.bind(this));
-  private closeMenu = document.getElementById("close-menu")?.addEventListener("click", this.closeMenuMobile.bind(this));
-  private linksMobile = document.getElementById("wrapper-links");
+  openMenu = document.getElementById("menu-mobile")?.addEventListener("click", this.openMenuMobile.bind(this));
+  closeMenu = document.getElementById("close-menu")?.addEventListener("click", this.closeMenuMobile.bind(this));
+  linksMobile = document.getElementById("wrapper-links");
+  iconCarShop = document.getElementById("icon-car-shop")?.addEventListener("click", this.openShoppingCard.bind(this));
+  shoppingCard = document.getElementById("shopping-card");
 
   openMenuMobile(){
-    this.linksMobile!.style.display = "block"
+    this.linksMobile!.style.display = "block";
   };
 
   closeMenuMobile(){
-    this.linksMobile!.style.display = "none"
+    this.linksMobile!.style.display = "none";
   };
+
+  openShoppingCard(){
+    const stateShoppingCard = this.shoppingCard?.classList;
+    stateShoppingCard?.toggle("active")
+  }
 };
 
 class App{
