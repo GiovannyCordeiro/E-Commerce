@@ -8,11 +8,11 @@ class Header{
   shoppingCard = document.getElementById("shopping-card");
 
   openMenuMobile(){
-    this.linksMobile!.style.display = "block";
+    this.linksMobile!.classList.add("active");
   };
 
   closeMenuMobile(){
-    this.linksMobile!.style.display = "none";
+    this.linksMobile!.classList.remove("active");
   };
 
   openShoppingCard(){
