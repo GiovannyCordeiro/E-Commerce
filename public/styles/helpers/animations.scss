@@ -12,4 +12,22 @@
   100%{
     height: 29.5%;
   };
+};
+
+@keyframes leftArrowAnimate{
+  to{
+    right: 0;
+  }
+  from{
+    right: .3rem;
+  }
+}
+
+@keyframes rightArrowAnimate{
+  to{
+    left: 0;
+  }
+  from{
+    left: .3rem;
+  }
 }

@@ -4,7 +4,7 @@
 
 header{
   width: 100%;
-  height: 6.7vh;
+  height: 6.8vh;
   // background: rgb(132, 132, 132);
   @include alignCenter;
   .wrapper-header{
@@ -40,6 +40,8 @@ header{
 
     .wrapper-links{
       display: block;
+      position: absolute;
+      z-index: 2;
       width:67vw;
       height: 100vh;
       padding: 1.5rem 0 0 1.6rem; 
@@ -102,6 +104,8 @@ header{
       }
 
       .shopping-card{
+        position: absolute;
+        z-index: 2;
         display: none;
         position: absolute;
         width: 96vw;
@@ -161,5 +165,56 @@ header{
       }
     }
   }
+}
 
+main{
+  .img-prod{
+    width: 100%;
+    height: 36vh;
+    margin-top: .65rem;
+    position: relative;
+    background: url(../../assets/imagens/image-product-1.jpg) center center;
+    background-size: cover;
+    .arrow-left{
+      @include alignCenter;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      width: 2.5rem;
+      height: 2.5rem;
+      background:$White;
+      border-radius: 2.5rem;
+      cursor: pointer;
+      img{
+        position: relative;
+        rotate: 180deg;
+        width: .65rem;
+      };
+      &:hover img{
+        animation: .3s leftArrowAnimate ease-in-out infinite alternate;
+      };
+    };
+    .arrow-right{
+      @include alignCenter;
+      justify-content: center;
+      position: absolute;
+      width: 2.5rem;
+      height: 2.5rem;
+      background:$White;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      border-radius: 2.5rem;
+      cursor: pointer;
+      img{
+        position:relative;
+        width: .65rem;
+      };
+      &:hover img{
+        animation: .3s rightArrowAnimate ease-in-out infinite alternate;
+      };
+    }
+  }
 }
