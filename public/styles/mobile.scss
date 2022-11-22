@@ -104,15 +104,14 @@ header{
       }
 
       .shopping-card{
-        position: absolute;
-        z-index: 2;
-        display: none;
-        position: absolute;
         width: 96vw;
         height: 29.5%;
-        background: $White;
+        position: absolute;
         top: 4.7rem;
         left: 50%;
+        z-index: 2;
+        display: none;
+        background: $White;
         transform: translateX(-50%);
         border-radius: .5rem;
         box-shadow: 0px 10px 50px -35px $Black;

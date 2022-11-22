@@ -1,1 +1,78 @@
 @import "./helpers/colors.scss";
+
+@media screen and (min-width:1440px){
+  header{
+    margin: 0 10rem;
+    height: initial;
+    width: 80%;
+    .wrapper-header{
+      border-bottom: 1px solid $Grayish-blue;
+      padding: 0;
+      // margin: 0 10.5rem;
+      .wrapper-logo-button{
+        .menu-mobile{
+          display: none;
+          img{
+            display: none;
+          }
+        }
+      }
+      .wrapper-links{
+        height: initial;
+        z-index: 0;
+        position: relative;
+        left: 0;
+        padding: 0 0 0 4rem;
+        background:none;
+
+        .close-menu{
+          display: none;
+        }
+        & > .links{
+          margin: 0;
+          align-items: center;
+          flex-direction: row;
+          gap: 1.5rem;
+
+          li{
+            padding: 2.3rem 0;
+            border-bottom: 1px solid transparent;
+            transition: .2s;
+            &:hover{
+              border-bottom: 1px solid $orange;
+            }
+            a{
+              font-size: 1rem;
+              font-weight: normal;
+              &:hover{
+                opacity: 100%;
+              }
+            }
+          }
+        }
+      }
+
+      .wrapper-shop{
+        gap: 2.8rem;
+
+        .shopping-card{
+          top:unset;
+          left:unset;
+
+          width:23%;
+          height: 30%;
+
+          top: 4.5rem;
+
+          &.active{
+            animation: unset;
+          }
+        }
+        .user{
+          width: 3.5rem;
+          height: 3.5rem;
+        }
+      }
+    }
+  }
+}
