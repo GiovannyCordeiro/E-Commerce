@@ -167,53 +167,60 @@ header{
 }
 
 main{
-  .img-prod{
+  .wrapper-image{
     width: 100%;
     height: 35vh;
-    margin-top: .65rem;
-    position: relative;
-    background: url(../../assets/imagens/image-product-1.jpg) center center;
-    background-size: cover;
-    .arrow-left{
-      @include alignCenter;
-      justify-content: center;
-      position: absolute;
-      top: 50%;
-      left: 1rem;
-      transform: translateY(-50%);
-      width: 2.5rem;
-      height: 2.5rem;
-      background:$White;
-      border-radius: 2.5rem;
-      cursor: pointer;
-      img{
-        position: relative;
-        rotate: 180deg;
-        width: .65rem;
+    .img-prod{
+      width: inherit;
+      height: inherit;
+      margin-top: .65rem;
+      position: relative;
+      background: url(../../assets/imagens/image-product-1.jpg) center center;
+      background-size: cover;
+      .arrow-left{
+        @include alignCenter;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+        width: 2.5rem;
+        height: 2.5rem;
+        background:$White;
+        border-radius: 2.5rem;
+        cursor: pointer;
+        img{
+          position: relative;
+          rotate: 180deg;
+          width: .65rem;
+        };
+        &:hover img{
+          animation: .3s leftArrowAnimate ease-in-out infinite alternate;
+        };
       };
-      &:hover img{
-        animation: .3s leftArrowAnimate ease-in-out infinite alternate;
-      };
-    };
-    .arrow-right{
-      @include alignCenter;
-      justify-content: center;
-      position: absolute;
-      width: 2.5rem;
-      height: 2.5rem;
-      background:$White;
-      top: 50%;
-      right: 1rem;
-      transform: translateY(-50%);
-      border-radius: 2.5rem;
-      cursor: pointer;
-      img{
-        position:relative;
-        width: .65rem;
-      };
-      &:hover img{
-        animation: .3s rightArrowAnimate ease-in-out infinite alternate;
-      };
+      .arrow-right{
+        @include alignCenter;
+        justify-content: center;
+        position: absolute;
+        width: 2.5rem;
+        height: 2.5rem;
+        background:$White;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        border-radius: 2.5rem;
+        cursor: pointer;
+        img{
+          position:relative;
+          width: .65rem;
+        };
+        &:hover img{
+          animation: .3s rightArrowAnimate ease-in-out infinite alternate;
+        };
+      }
+    }
+    .tumbs{
+      display: none;
     }
   }
 
