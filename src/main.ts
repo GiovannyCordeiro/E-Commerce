@@ -34,6 +34,11 @@ class Main{
   arrowLeft = document.getElementById("arrow-left")?.addEventListener("click", this.prevImage.bind(this));
   num:number = 0;
 
+  iconPlus = document.getElementById("icon-plus")?.addEventListener("click", this.incrementQuantItem.bind(this));
+  iconMinus = document.getElementById("icon-minus")?.addEventListener("click", this.decrementQuantItem.bind(this));
+  counterDOM = document.getElementById("counter");
+  counter:number = 0;
+
   handlerImage(numberImage:number){
     this.imgProd!.style.backgroundImage = `url(${this.images[numberImage]})`;
     this.imgProd!.style.backgroundPosition = "center 0";
@@ -60,13 +65,21 @@ class Main{
       this.handlerImage(this.num);
     }
   }
+
+  incrementQuantItem(){
+    this.counter++;
+    this.counterDOM!.innerText = `${this.counter}`;
+  }
+
+  decrementQuantItem(){
+    this.counter--;
+    if(this.counter < 0){
+      this.counter = 0
+    }
+    this.counterDOM!.innerText = `${this.counter}`;
+  }
 }
-
 class App{
-  constructor(){
-
-  };
-
   static init(){
     const header = new Header();
     const main = new Main();
