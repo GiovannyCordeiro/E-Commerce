@@ -167,6 +167,9 @@ header{
                 }
               }
             }
+            & > svg{
+              cursor:pointer;
+            }
           }
           #checkout{
             margin-top: 1.5rem;
@@ -178,6 +181,7 @@ header{
             border-radius: .5rem;
             font-weight: bold;
             font-size: 1rem;
+            cursor: pointer;
           }
         }
       }
