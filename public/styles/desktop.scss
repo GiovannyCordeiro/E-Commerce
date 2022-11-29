@@ -94,6 +94,7 @@
         width: inherit;
         height: inherit;
         border-radius: 1rem;
+        cursor: pointer;
         .arrow-left{
           display: none;
         }
@@ -129,7 +130,102 @@
             }
           }
         }
-        
+      }
+    }
+    .maximized-product{
+      display: none;
+      &.active{
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.80);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        @include alignCenter;
+        justify-content: center;
+        .wrapper-imgs{
+          padding-top: 1.4rem;
+          width: 38%;
+          height: 85vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .wrapper-icon-close{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            height: 1.5rem;
+            img{
+              width: 1.4rem;
+              cursor: pointer;
+            }
+          }
+          .img-main{
+            margin-top: 1.3rem;
+            width: 100%;
+            height: 73.8%;
+            background: url("../../assets/imagens/image-product-1.jpg") center center no-repeat;
+            background-size: cover;
+            border-radius: 1rem;
+            position: relative;
+            .arrow-left,.arrow-right{
+              width: 3.5rem;
+              height: 3.5rem;
+              left: 0;
+              top: 43%;
+              transform:translateX(-50%);
+              background: $White;
+              position: absolute;
+              @include alignCenter;
+              justify-content: center;
+              border-radius: 2rem;
+              cursor: pointer;
+              &:hover{
+                svg{
+                  stroke:$orange;
+                }
+              }
+              svg{
+                rotate: 180deg;
+                stroke:$Black;
+              }
+            }
+            .arrow-right{
+              left: unset;
+              right: -3.5rem;
+              svg{
+                rotate: 360deg;
+              }
+            }
+          }
+          .wrapper-thumbs{
+            margin-top: 2.5rem;
+            width: 83%;
+            height: 5.8rem;
+            padding: 0 .2rem;
+            display: flex;
+            justify-content: space-between;
+            .imgs-thumb{
+              width: 5.8rem;
+              height: 100%;
+              border-radius: .7rem;
+              border: 2px solid transparent;
+              cursor:pointer;
+              transition:.1s;
+              &:hover{
+                border: 2px solid $orange;
+              }
+              img{
+                border-radius: .55rem;
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
       }
     }
     .description-product{
