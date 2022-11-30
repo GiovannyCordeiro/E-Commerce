@@ -46,7 +46,6 @@ class Main{
     document.getElementById("thumb-main-3"),
     document.getElementById("thumb-main-4")
   ];
-
   thumbsMainListenners = this.thumbsMain.map((element, index) => {
     element?.addEventListener("click", () => {
       this.toggleImgMain(index);
@@ -55,13 +54,17 @@ class Main{
   
   //Maximized Desktop Images
   maximizedProduct = document.getElementById("maximized-product");
-
   mainImgMax = document.getElementById("main-img-max");
-  
-  thumbOneMax = document.getElementById("thumb-max-1")?.addEventListener("click", () => {this.modifImgMainMax(0)});
-  thumbTwoMax = document.getElementById("thumb-max-2")?.addEventListener("click", () => {this.modifImgMainMax(1)});
-  thumbThreeMax = document.getElementById("thumb-max-3")?.addEventListener("click", () => {this.modifImgMainMax(2)});
-  thumbFourMax = document.getElementById("thumb-max-4")?.addEventListener("click", () => {this.modifImgMainMax(3)});
+
+  thumbsMaximized = [
+    document.getElementById("thumb-max-1"), 
+    document.getElementById("thumb-max-2"), 
+    document.getElementById("thumb-max-3"), 
+    document.getElementById("thumb-max-4")
+  ];
+  thumbsMaximizedListenners = this.thumbsMaximized.map((element, index) => {
+    element?.addEventListener("click", () => {this.modifImgMainMax(index)});
+  })
 
   arrowLeftMax = document.getElementById("arrow-left-max")?.addEventListener("click", () => {this.imgMainBaseArrow("Left")});
   arrowRightMax = document.getElementById("arrow-right-max")?.addEventListener("click", () => {this.imgMainBaseArrow("Right")});
