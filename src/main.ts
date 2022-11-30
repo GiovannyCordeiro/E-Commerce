@@ -29,15 +29,33 @@ class Main{
     "../assets/imagens/image-product-4.jpg"
   ];
 
-  imgProdImg = document.getElementById("img-prod");
-  imgProd = document.getElementById("img-prod")?.addEventListener("click", this.openMaxProd.bind(this));
+  //mobile handler
+  imgProdListener = document.getElementById("img-prod")?.addEventListener("click", this.openMaxProd.bind(this));
   arrowRight = document.getElementById("arrow-right")?.addEventListener("click", this.nextImage.bind(this));
   arrowLeft = document.getElementById("arrow-left")?.addEventListener("click", this.prevImage.bind(this));
-  num:number = 0;
+  numMobileHandler:number = 0;
   
-  maximizedProduct = document.getElementById("maximized-product");
+  //handler product main 
+  imgProduct = document.getElementById("img-prod");
+  
+  numberHandlerMain = 0;
+
+  thumbsMain = [
+    document.getElementById("thumb-main-1"),
+    document.getElementById("thumb-main-2"),
+    document.getElementById("thumb-main-3"),
+    document.getElementById("thumb-main-4")
+  ];
+
+  thumbsMainListenners = this.thumbsMain.map((element, index) => {
+    element?.addEventListener("click", () => {
+      this.toggleImgMain(index);
+    })
+  })
   
   //Maximized Desktop Images
+  maximizedProduct = document.getElementById("maximized-product");
+
   mainImgMax = document.getElementById("main-img-max");
   
   thumbOneMax = document.getElementById("thumb-max-1")?.addEventListener("click", () => {this.modifImgMainMax(0)});
@@ -59,29 +77,29 @@ class Main{
   counter:number = 0;
 
   handlerImage(numberImage:number){
-    this.imgProdImg!.style.backgroundImage = `url(${this.images[numberImage]})`;
-    this.imgProdImg!.style.backgroundPosition = "center 0";
+    this.imgProduct!.style.backgroundImage = `url(${this.images[numberImage]})`;
+    this.imgProduct!.style.backgroundPosition = "center 0";
   }
 
   nextImage(){
-    if(this.num < 3){
-      this.num++;
-      this.handlerImage(this.num);
+    if(this.numMobileHandler < 3){
+      this.numMobileHandler++;
+      this.handlerImage(this.numMobileHandler);
     }
     else{
-      this.num = 0;
-      this.handlerImage(this.num);
+      this.numMobileHandler = 0;
+      this.handlerImage(this.numMobileHandler);
     }
   }
   
   prevImage(){
-    if(this.num === 0){
-      this.num = 3;
-      this.handlerImage(this.num);
+    if(this.numMobileHandler === 0){
+      this.numMobileHandler = 3;
+      this.handlerImage(this.numMobileHandler);
     }
     else{
-      this.num--;
-      this.handlerImage(this.num);
+      this.numMobileHandler--;
+      this.handlerImage(this.numMobileHandler);
     }
   }
 
@@ -136,6 +154,14 @@ class Main{
 
   handlerImageBaseArrow(num:number){
     this.mainImgMax!.style.backgroundImage = `url(${this.images[num]})`
+  }
+
+  toggleImgMain(num:number){
+    for(let i = 0; i < this.thumbsMain.length; i++){
+      this.thumbsMain[i]?.classList.remove("active");
+    }
+    this.handlerImage(num);
+    this.thumbsMain[num]?.classList.add("active");
   }
 }
 class App{
