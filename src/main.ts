@@ -17,32 +17,53 @@ class Header{
 class ShoppingCard{
   shoppingCard = document.getElementById("shopping-card");
   iconCarShop = document.getElementById("icon-car-shop")?.addEventListener("click", this.stateShoppingCard.bind(this));
+  static wrapperItensShopCard = document.getElementById("wrapper-itens-shop-card");
 
-  static listProducts:{id:number,count:number}[] = [];
+  static listProducts:{
+    id: number,
+    description: string,
+    price: number,
+    discont: number,
+    count: number
+  }[] = [];
   
   stateShoppingCard(){
     const stateShoppingCard = this.shoppingCard?.classList;
     stateShoppingCard?.toggle("active")
   };
 
-  injectItemShopCard(item:{}, number:number){
-    console
-  }
-
-  static generateItemShop(){
+  static generateItemShop(id:number, description:string, price:number, discont:number, count:number){
     const newItem  = 
       `
-      <div class="product-card">
+      <div id="${id}" class="product-card">
         <div class="thumb-card"></div>
         <div class="description-card">
-          <p>Autumn Limited Edition...</p>
+          <p>${description}</p>
           <div class="price">
-            <p>$125.00 x 3</p><b>$375,00</b>
+            <p>$${price - discont} x ${count}</p><b>$${price *= count}</b>
           </div>
         </div>
-        <svg width="14" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Z" id="a"/></defs><use fill="#C3CAD9" fill-rule="nonzero" xlink:href="#a"/></svg>
+        <svg id="delete-icon-product" width="14" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Z" id="a"/></defs><use fill="#C3CAD9" fill-rule="nonzero" xlink:href="#a"/></svg>
       </div>
+
+      <button id="checkout">Checkout</button>
       `;
+    return newItem;
+  }
+
+  static injectItemShopCard(){
+    const [htmlsItens] = ShoppingCard.listProducts.map((element) => {
+      const {id, description, price, discont, count} = element;
+      const newItem =  this.generateItemShop(id, description, price, discont, count)
+      return newItem;
+    })
+    this.wrapperItensShopCard!.innerHTML = htmlsItens;
+  }
+
+  deleteProductIcon = document.getElementById("delete-icon-product")?.addEventListener("click", this.removeProductList.bind(this));
+
+  removeProductList(){
+    console.log("salve");
   }
 }
 
@@ -192,13 +213,16 @@ class Main{
 
   //shopping
 
-  btnAddShoppinngCard = document.getElementById("btn-add-shoppinng-card")?.addEventListener("click", this.addListProducts.bind(this));
+  btnAddShoppinngCard = document.getElementById("btn-add-shoppinng-card")?.addEventListener("click", () => {this.addListProducts(), ShoppingCard.injectItemShopCard()});
   addListProducts(){
+    if(this.counter === 0){
+      this.counter = 1;
+    }
     const productItem = {
       id: 1,
-      description: "salve",
-      price: 302,
-      discont: 10,
+      description: "Autum Limited Edition",
+      price: 250,
+      discont: 125,
       count: this.counter,
     }
     const filter = ShoppingCard.listProducts.filter((element) => {return element.id === productItem.id});
